@@ -1,0 +1,49 @@
+{
+  "capabilities": {
+    "tools": [
+      {
+        "description": "调用 OpenAI 兼容的 /chat/completions（v1 非流式）：返回 message（tool_calls 的 arguments 为字符串）、usage、finish_reason；不执行工具",
+        "idempotent": false,
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "messages": {
+              "type": "array"
+            },
+            "model": {
+              "default": "",
+              "type": "string"
+            },
+            "temperature": {
+              "default": 0.7,
+              "type": "number"
+            },
+            "tools": {
+              "default": [],
+              "type": "array"
+            }
+          },
+          "required": [
+            "messages"
+          ],
+          "type": "object"
+        },
+        "name": "chat",
+        "risk": "low",
+        "timeout_ms": 120000
+      }
+    ]
+  },
+  "concurrency": "exclusive",
+  "display_name": "模型模块",
+  "instance_id": "main",
+  "limits": {
+    "max_concurrency": 4,
+    "max_payload": 65519
+  },
+  "module_id": "com.example.model",
+  "priority": 100,
+  "protocol": "vade/v1",
+  "role": "tool",
+  "version": "1.0.0"
+}

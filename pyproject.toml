@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "model-module"
+version = "1.0.0"
+description = "Vade model module: non-streaming OpenAI-compatible chat with retries and no prompt logging"
+requires-python = ">=3.10"
+dependencies = ["vade-sdk==0.1.*"]
+
+[project.optional-dependencies]
+core = ["vade-sdk[core]==0.1.*"]
+test = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
